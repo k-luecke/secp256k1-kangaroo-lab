@@ -1,0 +1,5 @@
+{
+  "t_jac_init": 2.4e-05,
+  "t_ladder_init": 2.8e-05,
+  "S_frontier": 1.282
+}

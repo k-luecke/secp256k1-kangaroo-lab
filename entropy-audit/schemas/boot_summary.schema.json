@@ -1,0 +1,79 @@
+{
+  "type": "object",
+  "required": [
+    "boot_id",
+    "time_to_rng_init_ms",
+    "time_to_first_urandom_read_ms"
+  ],
+  "properties": {
+    "boot_id": {
+      "type": "string"
+    },
+    "time_to_rng_init_ms": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "time_to_first_urandom_read_ms": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "interrupt_count_before_read": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "unique_irq_numbers_before_read": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "device_randomness_calls": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "disk_randomness_calls": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "fast_pool_promotions": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "secondary_pool_transfers": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "entropy_count_at_read": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "entropy_total_at_read": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "irq_sequence": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    }
+  }
+}

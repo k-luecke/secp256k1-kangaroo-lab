@@ -1,0 +1,122 @@
+--- a/drivers/char/random.c
++++ b/drivers/char/random.c
+@@ -42,6 +42,20 @@
+  *
+  * SAFETY-CONSTRAINED METADATA INSTRUMENTATION:
+  * This patch logs strictly non-sensitive event metadata for empirical boot
+- * diversity research. Under no circumstances are pool state words, entropy
+- * buffer contents, or raw /dev/urandom output bytes exported.
++ */
++
++#define RNG_TRACE_PREFIX "[RNG_META] "
++
++static atomic_t meta_dev_random_calls = ATOMIC_INIT(0);
++static atomic_t meta_irq_random_calls = ATOMIC_INIT(0);
++static atomic_t meta_input_random_calls = ATOMIC_INIT(0);
++static atomic_t meta_disk_random_calls = ATOMIC_INIT(0);
++static atomic_t meta_fast_pool_promotions = ATOMIC_INIT(0);
++static atomic_t meta_secondary_transfers = ATOMIC_INIT(0);
++
++static void log_rng_event_metadata(const char *event_name, int cpu, int irq,
++                                   unsigned long ip, const char *pool,
++                                   int entropy_count)
++{
++	/* Monotonic timestamp and cycle counters are captured safely */
++	u64 ts_ns = ktime_to_ns(ktime_get());
++	unsigned long jf = jiffies;
++	cycles_t cyc = get_cycles();
++
++	printk(KERN_INFO RNG_TRACE_PREFIX
++	       "{\"event\":\"%s\",\"timestamp_ns\":%llu,\"cpu\":%d,\"jiffies\":%lu,"
++	       "\"cycles\":%llu,\"irq\":%d,\"ip\":\"0x%lx\",\"pool_target\":\"%s\","
++	       "\"entropy_count\":%d}\n",
++	       event_name, ts_ns, cpu, jf, (unsigned long long)cyc, irq, ip,
++	       pool ? pool : "none", entropy_count);
++}
+@@ -718,6 +732,8 @@ static void mix_pool_bytes_nolock(struct entropy_store *r, const void *in,
+ 	trace_mix_pool_bytes_nolock(r->name, nbytes, _RET_IP_);
++	/* Safety constraint: Do not record raw bytes 'in' or pool state. */
+ 	i = r->add_ptr;
+@@ -820,6 +836,12 @@ static void fast_mix(struct fast_pool *f)
+ static void credit_entropy_bits(struct entropy_store *r, int nbits)
+ {
++	int count;
+ 	trace_credit_entropy_bits(r->name, nbits,
+ 				  r->entropy_count >> (ENTROPY_SHIFT + 3),
+ 				  r->entropy_total >> (ENTROPY_SHIFT + 3),
+ 				  _RET_IP_);
++	count = r->entropy_count >> (ENTROPY_SHIFT + 3);
++	log_rng_event_metadata("credit_entropy", smp_processor_id(), -1,
++	                       _RET_IP_, r->name, count);
+ }
+@@ -858,6 +880,10 @@ void add_device_randomness(const void *buf, unsigned int size)
+ 	unsigned long time = random_get_entropy() ^ jiffies;
+ 
+ 	trace_add_device_randomness(size, _RET_IP_);
++	atomic_inc(&meta_dev_random_calls);
++	log_rng_event_metadata("add_device_randomness", smp_processor_id(), -1,
++	                       _RET_IP_, "input",
++	                       input_pool.entropy_count >> (ENTROPY_SHIFT + 3));
++	/* Safety note: 'buf' payload bytes are never logged */
+ 	mix_pool_bytes(&input_pool, &time, sizeof(time));
+ }
+@@ -895,6 +921,9 @@ void add_interrupt_randomness(int irq, int irq_flags)
+ 	struct fast_pool *fast_pool = &__get_cpu_var(irq_randomness);
+ 	struct pt_regs *regs = get_irq_regs();
+ 	unsigned long now = jiffies;
++	int cpu = smp_processor_id();
++	unsigned long ip = regs ? instruction_pointer(regs) : _RET_IP_;
+ 
+ 	trace_add_interrupt_randomness(fast_pool->count, cpu, ip);
++	atomic_inc(&meta_irq_random_calls);
++	log_rng_event_metadata("add_interrupt_randomness", cpu, irq, ip,
++	                       "fast_pool", -1);
+ 
+ 	c_high = (unsigned long)((u64)cycles >> 32);
+ 	c_low = (unsigned long)cycles;
+@@ -910,6 +939,10 @@ void add_interrupt_randomness(int irq, int irq_flags)
+ 		return;
+ 
+ 	fast_pool->last = now;
++	atomic_inc(&meta_fast_pool_promotions);
++	log_rng_event_metadata("fast_pool_promotion", cpu, irq, ip,
++	                       "input",
++	                       input_pool.entropy_count >> (ENTROPY_SHIFT + 3));
+ 	__mix_pool_bytes(&input_pool, &fast_pool->pool, sizeof(fast_pool->pool));
+ }
+@@ -950,6 +983,9 @@ static void xfer_secondary_pool(struct entropy_store *r, size_t nbytes)
+ {
+ 	__u32 tmp[OUTPUT_POOL_WORDS];
+ 
+ 	trace_xfer_secondary_pool(r->name, nbytes, _RET_IP_);
++	atomic_inc(&meta_secondary_transfers);
++	log_rng_event_metadata("xfer_secondary_pool", smp_processor_id(), -1,
++	                       _RET_IP_, r->name,
++	                       r->entropy_count >> (ENTROPY_SHIFT + 3));
++	/* Pool state is mixed internally; no output bytes are logged */
+ }
+@@ -1120,6 +1156,12 @@ static void init_std_data(struct entropy_store *r)
+ 	getnstimeofday(&now);
+ 	mix_pool_bytes(r, &now, sizeof(now));
++	log_rng_event_metadata("init_std_data", smp_processor_id(), -1,
++	                       _RET_IP_, r->name,
++	                       r->entropy_count >> (ENTROPY_SHIFT + 3));
+ }
+@@ -1340,6 +1382,16 @@ urandom_read(struct file *file, char __user *buf,
+ 	     size_t nbytes, loff_t *ppos)
+ {
+ 	int ret;
++	u64 ts = ktime_to_ns(ktime_get());
++
++	/* Record metadata of the request without capturing buffer payload */
++	printk(KERN_INFO RNG_TRACE_PREFIX
++	       "{\"event\":\"urandom_read\",\"timestamp_ns\":%llu,\"cpu\":%d,"
++	       "\"bytes_requested\":%zu,\"comm\":\"%s\",\"pid\":%d}\n",
++	       ts, smp_processor_id(), nbytes, current->comm, current->pid);
+ 
+ 	trace_urandom_read(nbytes, nonblocking_pool.entropy_count,
+ 			   input_pool.entropy_count);
+ 	ret = extract_entropy_user(&nonblocking_pool, buf, nbytes);
++	/* Safety guarantee: 'buf' contains random output and is never logged */
+ 	return ret;
+ }

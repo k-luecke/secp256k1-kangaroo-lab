@@ -1,0 +1,8 @@
+{
+  "id": "H-DISC-02",
+  "status": "FALSIFIED",
+  "novelty_classification": "KNOWN_OBSTRUCTION",
+  "motivation": "Test whether factoring out the order-3 endomorphism phi(x,y) = (beta*x, y) yields further reduction in bounded DLP.",
+  "derivation": "phi(k*G) = (lambda*k)*G. On Z_n, scalar maps to lambda*k (mod n).",
+  "result": "FALSIFIED: Minimum displacement in endomorphism direction is ~2^126 bits. Endomorphism baby steps have strictly zero collision with 1D bounded giant steps across all tested N in [2^4, 2^20]."
+}

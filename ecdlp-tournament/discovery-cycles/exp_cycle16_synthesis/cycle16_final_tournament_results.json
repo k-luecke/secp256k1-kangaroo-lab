@@ -1,0 +1,61 @@
+{
+  "final_tournament": {
+    "16": {
+      "N": 16,
+      "median_t_std": 0.001496,
+      "median_t_kang": 0.006941,
+      "median_t_gwz": 0.001117,
+      "median_t_opt": 0.001256,
+      "S_frontier": 0.889
+    },
+    "64": {
+      "N": 64,
+      "median_t_std": 0.002165,
+      "median_t_kang": 0.010594,
+      "median_t_gwz": 0.001167,
+      "median_t_opt": 0.001438,
+      "S_frontier": 0.812
+    },
+    "256": {
+      "N": 256,
+      "median_t_std": 0.003817,
+      "median_t_kang": 0.016268,
+      "median_t_gwz": 0.001279,
+      "median_t_opt": 0.001528,
+      "S_frontier": 0.837
+    },
+    "1024": {
+      "N": 1024,
+      "median_t_std": 0.007093,
+      "median_t_kang": 0.027238,
+      "median_t_gwz": 0.001511,
+      "median_t_opt": 0.001665,
+      "S_frontier": 0.907
+    },
+    "4096": {
+      "N": 4096,
+      "median_t_std": 0.013665,
+      "median_t_kang": 0.050156,
+      "median_t_gwz": 0.002151,
+      "median_t_opt": 0.002214,
+      "S_frontier": 0.971
+    },
+    "16384": {
+      "N": 16384,
+      "median_t_std": 0.026848,
+      "median_t_kang": 0.096127,
+      "median_t_gwz": 0.003477,
+      "median_t_opt": 0.002562,
+      "S_frontier": 1.357
+    },
+    "65536": {
+      "N": 65536,
+      "median_t_std": 0.053573,
+      "median_t_kang": 0.190389,
+      "median_t_gwz": 0.005411,
+      "median_t_opt": 0.003849,
+      "S_frontier": 1.406
+    }
+  },
+  "historical_16_puzzles_time_ms": 27.77
+}

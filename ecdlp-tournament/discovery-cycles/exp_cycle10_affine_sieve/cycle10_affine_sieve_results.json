@@ -1,0 +1,6 @@
+{
+  "samples": 2000,
+  "legendre_parity_match_pct": 49.8,
+  "mod3_match_pct": 33.55,
+  "S_frontier": 1.282
+}

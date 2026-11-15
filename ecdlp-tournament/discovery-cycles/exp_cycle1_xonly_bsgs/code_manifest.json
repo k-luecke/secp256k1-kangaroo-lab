@@ -1,0 +1,8 @@
+{
+  "files": [
+    "puzzle_solver/representations/xonly_bsgs.py",
+    "puzzle_solver/tests/test_xonly_bsgs.py",
+    "puzzle_solver/benchmarks/benchmark_xonly_comparison.py",
+    "puzzle_solver/ledger/cycle1_xonly_results.json"
+  ]
+}

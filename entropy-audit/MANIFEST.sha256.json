@@ -1,0 +1,14 @@
+{
+  "README.md": "17bc69b39856bcf463dedb05e8bfa45a4802abdae783dbd21fd2f27f1ef11762",
+  ".gitignore": "05fd36b4a9c09b98c814ff1b0b6faf9c508d900dab54ba741018e303d10bdbdd",
+  "requirements.txt": "faeb826d7cfaecff11bde4aef44cf68dcf9ec510b08efc733e8ffc6bacab3b83",
+  "HANDOFF.md": "e8b090c3bfc06e40ba891c7d888946959d83072421bf97ce4b7cf205f3f4d0c6",
+  "config/qemu.json": "4516e6e24b0d3128014937f6dd2bf44b85b5e455470eef2e86662d14fb05ea07",
+  "scripts/make_boot_plan.py": "6730ad263807294eb7801c18f67855abeafd3df7d7aeca5d105d9520531c851b",
+  "scripts/check_environment.py": "b5adbc12c0d67d910bf62a1ad94cc1d0537d8e6a2bd0d5b0564ccde03d62860a",
+  "scripts/analyze_public_puzzle_evidence.py": "4b22bc52b0021f3ae6e777772e8df1003d6c1f64fe68ea164a5265e393c4ae32",
+  "scripts/analyze_boot_diversity.py": "815fb5cbf30e6d3ace2f7b27d453da39fd976d1fb8a4faf22d5ad2b5730a4715",
+  "scripts/make_qemu_command.py": "facf0d39b66915cbaf35dce856b0d9db0458da543f8c469bc1da6791955e32e3",
+  "schemas/boot_summary.schema.json": "c79c672428436b107a062a71e687d2874efc13dedc62de29d2df2333dd91d209",
+  "data/solved_puzzles.csv": "5f9e7d94d060237c3746a73e94c9e690592e4ef00392bc492844a5496a054421"
+}

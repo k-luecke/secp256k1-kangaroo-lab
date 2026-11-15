@@ -1,0 +1,7 @@
+{
+  "D": -3,
+  "j_invariant": 0,
+  "order": "Z[omega]",
+  "min_eigenvalue_bits": 126,
+  "certified_obstruction": "FAIL-B07"
+}

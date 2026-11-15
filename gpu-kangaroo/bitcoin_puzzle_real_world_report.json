@@ -1,0 +1,65 @@
+[
+  {
+    "puzzle_num": 40,
+    "address": "1EeAxcprB2PpCnr34VfZdFrkUWuxyiNEFv",
+    "interval_width": 549755813888,
+    "recovered_scalar_hex": "0xe9ae4933d6",
+    "recovered_scalar_dec": "1003651412950",
+    "solve_time_sec": 4.606984800193459,
+    "total_steps": 5017600,
+    "c_work_factor": 6.767234693946362,
+    "throughput_kadds": 1089.1506348103658,
+    "num_dps": 2683,
+    "num_rounds": 140,
+    "timing": {
+      "setup": 2.4800188839435577e-05,
+      "h2d": 0.057483299635350704,
+      "gpu_kernel": 4.404106499860063,
+      "d2h": 0.10822280030697584,
+      "host_dp": 0.03422090015374124,
+      "verify": 0.0014649999793618917
+    }
+  },
+  {
+    "puzzle_num": 41,
+    "address": "1L5sU9qvJeuwQUdt4y1eiLmquFxKjtHr3E",
+    "interval_width": 1099511627776,
+    "recovered_scalar_hex": "0x153869acc5b",
+    "recovered_scalar_dec": "1458252205147",
+    "solve_time_sec": 4.575655499938875,
+    "total_steps": 4874240,
+    "c_work_factor": 4.6484375,
+    "throughput_kadds": 1065.291737213849,
+    "num_dps": 2922,
+    "num_rounds": 136,
+    "timing": {
+      "setup": 1.5300000086426735e-05,
+      "h2d": 0.05546340113505721,
+      "gpu_kernel": 4.375605798326433,
+      "d2h": 0.10537210176698864,
+      "host_dp": 0.03578410018235445,
+      "verify": 0.0018619000911712646
+    }
+  },
+  {
+    "puzzle_num": 42,
+    "address": "1E32GPWgDyeyQac4aJxm9HVoLrrEYPnM4N",
+    "interval_width": 2199023255552,
+    "recovered_scalar_hex": "0x2a221c58d8f",
+    "recovered_scalar_dec": "2895374552463",
+    "solve_time_sec": 1.219925999874249,
+    "total_steps": 1290240,
+    "c_work_factor": 0.870073032078818,
+    "throughput_kadds": 1057.7138743129667,
+    "num_dps": 1164,
+    "num_rounds": 36,
+    "timing": {
+      "setup": 4.719989374279976e-05,
+      "h2d": 0.01637939945794642,
+      "gpu_kernel": 1.1650790011044592,
+      "d2h": 0.026136200642213225,
+      "host_dp": 0.00962859857827425,
+      "verify": 0.0021937000565230846
+    }
+  }
+]

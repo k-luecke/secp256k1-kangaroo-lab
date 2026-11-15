@@ -1,0 +1,69 @@
+{
+  "experiment": "Discovery Cycle 2: Endomorphism Quotient Obstruction on Bounded DLP",
+  "hypothesis": "H-DISC-02",
+  "timestamp": "2026-10-02 05:28:52",
+  "glv_basis": {
+    "v1": [
+      "0x114ca50f7a8e2f3f657c1108d9d44cfd8",
+      "0x3086d221a7d46bcde86c90e49284eb15"
+    ],
+    "v2": [
+      "0x3086d221a7d46bcde86c90e49284eb15",
+      "-0xe4437ed6010e88286f547fa90abfe4c3"
+    ],
+    "min_displacement_bits": 126
+  },
+  "collision_disjointness_panel": [
+    {
+      "N": 16,
+      "m": 5,
+      "phi_scalars_min": 2637848147848204714792320558262846500054591612627143416755301512854167554283,
+      "phi_scalars_min_bits": 251,
+      "direct_hits_count": 1,
+      "phi_hits_count": 0,
+      "phi_hits_disjoint": true
+    },
+    {
+      "N": 256,
+      "m": 17,
+      "phi_scalars_min": 2637848147848204714792320558262846500054591612627143416755301512854167554283,
+      "phi_scalars_min_bits": 251,
+      "direct_hits_count": 1,
+      "phi_hits_count": 0,
+      "phi_hits_disjoint": true
+    },
+    {
+      "N": 4096,
+      "m": 65,
+      "phi_scalars_min": 788206293281130895833733667795169450163374978702579154042399362929652220056,
+      "phi_scalars_min_bits": 249,
+      "direct_hits_count": 1,
+      "phi_hits_count": 0,
+      "phi_hits_disjoint": true
+    },
+    {
+      "N": 65536,
+      "m": 257,
+      "phi_scalars_min": 273229268004812027291119554877338149564466676519405954628103424065210894115,
+      "phi_scalars_min_bits": 248,
+      "direct_hits_count": 1,
+      "phi_hits_count": 0,
+      "phi_hits_disjoint": true
+    },
+    {
+      "N": 1048576,
+      "m": 1025,
+      "phi_scalars_min": 31481510733305186039624996836844998530025050855638709841910909265980462289,
+      "phi_scalars_min_bits": 245,
+      "direct_hits_count": 1,
+      "phi_hits_count": 0,
+      "phi_hits_disjoint": true
+    }
+  ],
+  "canonicalization_benchmark": {
+    "std_stepping_us": 134.33,
+    "canon_stepping_us": 135.8,
+    "overhead_ratio": 1.01
+  },
+  "structural_obstruction_identified": "Interval Boundary Non-Invariance: lambda * k (mod n) expands bounded scalar k into a 256-bit torus with minimum displacement > 2^126, yielding strictly zero collision with 1D giant steps in N << 2^128."
+}

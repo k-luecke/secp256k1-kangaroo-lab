@@ -1,0 +1,8 @@
+{
+  "id": "H-DISC-01",
+  "status": "PASSED",
+  "novelty_classification": "KNOWN",
+  "motivation": "Eliminate sign/y-coordinate degree of freedom by indexing baby steps modulo negation automorphism iota(P) = -P.",
+  "derivation": "x(Q_i) = x(P_j) <=> Q_i = +/- P_j => k - L = i*W +/- j with W = 2*m_b + 1.",
+  "result": "PASSED: 52.5% baby setup time reduction, 46-50% memory reduction, 1.50x cold speedup across N in [16, 65536]."
+}

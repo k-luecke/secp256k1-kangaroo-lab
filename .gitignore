@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.so
+*.dll
+*.exe
+*.bin
+output/

@@ -1,0 +1,6 @@
+{
+  "files": [
+    "puzzle_solver/benchmarks/cycle2_endomorphism_obstruction.py",
+    "puzzle_solver/ledger/cycle2_endomorphism_obstruction_results.json"
+  ]
+}

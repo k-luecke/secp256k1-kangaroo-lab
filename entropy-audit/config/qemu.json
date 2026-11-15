@@ -1,0 +1,16 @@
+{
+  "iso_path": "/path/to/ubuntu-13.10-desktop-amd64.iso",
+  "qemu_binary": "qemu-system-x86_64",
+  "machine": "pc",
+  "cpu": "qemu64",
+  "memory_mb": 2048,
+  "smp": 1,
+  "nic_model": "e1000",
+  "mac": "52:54:00:12:34:56",
+  "network": "none",
+  "rtc": "base=utc,clock=vm",
+  "boot": "d",
+  "extra_args": [
+    "-no-reboot"
+  ]
+}

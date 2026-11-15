@@ -1,0 +1,12 @@
+{
+  "N": 65536,
+  "best_batch_size": 64,
+  "median_t_optimized_cold": 0.003776,
+  "median_t_gwz_cold": 0.004943,
+  "S_frontier": 1.309,
+  "frontier_speedup_vs_gwz": 1.309,
+  "held_out_cases_tested": 5,
+  "held_out_pass": true,
+  "median_t_warm": 0.002427,
+  "S_frontier_warm": 2.037
+}

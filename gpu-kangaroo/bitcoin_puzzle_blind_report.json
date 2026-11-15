@@ -1,0 +1,42 @@
+[
+  {
+    "puzzle_num": 43,
+    "address": "1PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1",
+    "width": 4398046511104,
+    "recovered_scalar_hex": "0x6bd3b27c591",
+    "solve_time_sec": 10.936311800032854,
+    "total_steps": 11648000,
+    "c_work_factor": 5.55419921875,
+    "throughput_kadds": 1065.0971406805368,
+    "num_dps": 5859,
+    "num_rounds": 325,
+    "timing": {
+      "setup": 2.9999995604157448e-05,
+      "h2d": 0.13370769936591387,
+      "gpu_kernel": 10.460332499118522,
+      "d2h": 0.24861319875344634,
+      "host_dp": 0.08772690244950354,
+      "verify": 0.0020936999935656786
+    }
+  },
+  {
+    "puzzle_num": 44,
+    "address": "1CkR2uS7LmFwc3T2jV8C1BhWb5mQaoxedF",
+    "width": 8796093022208,
+    "recovered_scalar_hex": "0xe02b35a358f",
+    "solve_time_sec": 31.075998899992555,
+    "total_steps": 26485760,
+    "c_work_factor": 8.930332926475646,
+    "throughput_kadds": 852.3114986775868,
+    "num_dps": 10945,
+    "num_rounds": 739,
+    "timing": {
+      "setup": 1.5300000086426735e-05,
+      "h2d": 0.3985494989901781,
+      "gpu_kernel": 29.71052550128661,
+      "d2h": 0.7490184989292175,
+      "host_dp": 0.20589539920911193,
+      "verify": 0.0019437998998910189
+    }
+  }
+]

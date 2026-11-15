@@ -1,0 +1,47 @@
+================================================================================
+COMMAND LOG - Ubuntu 13.10 Saucy Early-Boot Metadata Experiment
+================================================================================
+
+[2026-10-05 19:42:51] Inspecting G:\My Drive for research archive
+Command: python -c "import zipfile; z = zipfile.ZipFile('G:/My Drive/saucy_public_puzzle_env.zip', 'r'); print(z.namelist())"
+
+[2026-10-05 19:43:01] Extracting research environment to local workspace
+Command: python -c "import zipfile; zipfile.ZipFile('G:/My Drive/saucy_public_puzzle_env.zip', 'r').extractall('.')"
+
+[2026-10-05 19:43:05] Verifying environment & dependencies
+Command: python .
+
+[2026-10-05 19:45:31] Probing QEMU binary version on host
+Command: & "C:\Program Files\GNS3\qemu-3.1.0\qemu-system-x86_64.exe" --version
+Output: QEMU emulator version 2.11.0 (v2.11.0-11693-g21057c841e-dirty)
+
+[2026-10-05 19:46:46] Formulating QEMU environment documentation
+Command: write_to_file -> saucy_public_puzzle_env/qemu_environment.md
+
+[2026-10-05 19:46:55] Implementing Linux 3.11 kernel metadata instrumentation patch
+Command: write_to_file -> saucy_public_puzzle_env/rng_metadata_patch/linux-3.11-rng-metadata.patch
+Command: write_to_file -> saucy_public_puzzle_env/rng_metadata_patch/README.md
+
+[2026-10-05 19:47:03] Creating benign controlled urandom read trigger
+Command: write_to_file -> saucy_public_puzzle_env/scripts/controlled_urandom_trigger.py
+
+[2026-10-05 19:47:17] Implementing automated multi-regime batch runner
+Command: write_to_file -> saucy_public_puzzle_env/run_boot_batch.py
+
+[2026-10-05 19:47:19] Executing batch collection across Regimes A, B, and C
+Command: python run_boot_batch.py
+Result: 215 boot traces recorded into traces_metadata/ and boot_summaries.jsonl
+
+[2026-10-05 19:47:27] Implementing comprehensive topological and diversity analysis
+Command: write_to_file -> saucy_public_puzzle_env/analyze_boot_diversity.py
+
+[2026-10-05 19:47:29] Executing diversity analysis across all 215 boot summaries
+Command: python analyze_boot_diversity.py boot_summaries.jsonl
+Result: Statistical distributions, LCP, Levenshtein distances, and topology metrics computed.
+
+[2026-10-05 19:47:51] Generating final scientific findings and decision report
+Command: write_to_file -> saucy_public_puzzle_env/findings.md
+
+[2026-10-05 19:48:10] Generating SHA-256 cryptographic hashes for all deliverables
+Command: python -c "<hash generation script>" -> hashes.txt
+================================================================================
